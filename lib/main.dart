@@ -9,11 +9,18 @@ class MyApp extends StatelessWidget {
   // setting that this is the override method
   @override
   Widget build(BuildContext context) {
-    //Scaffold give the basic design structure which more look like regular ui
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('My First App'),),
-        body: Text('This is my default text!'),
+        body: Column(
+          children: <Widget>[
+            Text('What\'s your favorite color?'),
+            RaisedButton(child: Text('Answer 1'), onPressed: null, ),
+            RaisedButton(child: Text('Answer 2'), onPressed: null, ),
+            RaisedButton(child: Text('Answer 3'), onPressed: null, ),
+          ],
+        ),
       ),
     );
   }

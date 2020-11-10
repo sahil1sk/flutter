@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-void main(){
-  // runAppp is available because of package we import
-  runApp(MyApp()); // here we passing the core widget which we want to run
-}
+// we can also run the funtion using => 
+// if we have to execute only one line of code
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+
+  // setting that this is the override method
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(home: Text('Hello!'));
   }

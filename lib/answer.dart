@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 class Answer extends StatelessWidget {
   // here we set the varable that it is a funtion
   final Function selectHandler;
+  final String answerText;
 
   // constructor
-  Answer(this.selectHandler); // we set the funtion
+  Answer(this.selectHandler, this.answerText); // we set the funtion and answerText
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class Answer extends StatelessWidget {
       child: RaisedButton(
         textColor: Colors.white,
         color: Colors.blue, // also use as Color(..)
-        child: Text('Answer 1'), 
+        child: Text(answerText), 
         onPressed: selectHandler, 
       ),
     );

@@ -2,12 +2,23 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
 
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyAppState();
+  }
+}
+
+// <MyApp> this will tell to flutter this state is belong to MyApp class
+class MyAppState extends State<MyApp> {
   var questionIndex = 0;
 
-  void answerQuestion()  {
-    questionIndex++;
+  void answerQuestion() {
+    setState(() {
+      questionIndex++;      
+    });
     print('Answer chosen');
   }
 
@@ -23,7 +34,7 @@ class MyApp extends StatelessWidget {
         body: Column(
           children: <Widget>[
             Text(questions.elementAt(questionIndex)),
-            RaisedButton(child: Text('Answer 1'), onPressed: () => answerQuestion, ),
+            RaisedButton(child: Text('Answer 1'), onPressed: () => answerQuestion(), ),
             RaisedButton(child: Text('Answer 2'), onPressed: () => print('Answered'), ),
             RaisedButton(child: Text('Answer 3'), onPressed: () {
               print('answered');

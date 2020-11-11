@@ -6,18 +6,18 @@ class MyApp extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-// <MyApp> this will tell to flutter this state is belong to MyApp class
-class MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+//_MyAppState _ makes this class private means this will available only in this file not out of this file
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0; // make this property private
 
-  void answerQuestion() {
+  // make this method private
+  void _answerQuestion() {
     setState(() {
-      questionIndex++;      
+      _questionIndex++;      
     });
     print('Answer chosen');
   }
@@ -33,8 +33,8 @@ class MyAppState extends State<MyApp> {
         appBar: AppBar(title: Text('My First App'),),
         body: Column(
           children: <Widget>[
-            Text(questions.elementAt(questionIndex)),
-            RaisedButton(child: Text('Answer 1'), onPressed: () => answerQuestion(), ),
+            Text(questions.elementAt(_questionIndex)),
+            RaisedButton(child: Text('Answer 1'), onPressed: () => _answerQuestion(), ),
             RaisedButton(child: Text('Answer 2'), onPressed: () => print('Answered'), ),
             RaisedButton(child: Text('Answer 3'), onPressed: () {
               print('answered');

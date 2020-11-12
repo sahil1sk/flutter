@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-// import files after packages
-import './question.dart';
-import './answer.dart';
+// import files after package
+import './quiz.dart';
+import './result.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
 //_MyAppState _ makes this class private means this will available only in this file not out of this file
 class _MyAppState extends State<MyApp> {
 
-  final questions = const [
+  final _questions = const [
     {
       'questionText': 'What\'s your favorite color?',
       'answers': ['Black', 'Red', 'Green', 'White'],
@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
       _questionIndex++;      
     });
 
-    if(_questionIndex < questions.length) {
+    if(_questionIndex < _questions.length) {
       print('we have more questions');
     }
   }
@@ -50,18 +50,13 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('My First App'),),
-        body: _questionIndex < questions.length ? Column(
-          children: <Widget>[
-            Question(questions[_questionIndex]['questionText']), // we are not able to use questions[_questionIndex].questionText
-            // so here it will ... make the new list 
-            ...(questions[_questionIndex]['answers'] as List<String>)
-              .map((answer) => Answer(_answerQuestion, answer)).toList()
-          ],
-        ) 
-        :
-        Center(
-          child: Text('You did it!'),
-        ),
+        body: _questionIndex < _questions.length 
+        ? Quiz(
+            questions: _questions, 
+            answerQuestion: _answerQuestion,
+            questionIndex: _questionIndex,
+          )
+        : Result(),
       ),
     );
   }

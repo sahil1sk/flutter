@@ -18,7 +18,7 @@ class Quiz extends StatelessWidget {
     return Column(
       children: <Widget>[
         Question(questions[questionIndex]['questionText']), // we are not able to use questions[_questionIndex].questionText
-        // so here it will ... make the new list 
+        // so here it will ... make the elements of the list merge in this list 
         ...(questions[questionIndex]['answers'] as List<Map<String, Object>>)
           .map((answer) => Answer(() => answerQuestion(answer['score']), answer['text'])).toList()
       ],
